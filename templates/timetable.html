@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .time {
+            font-weight: bold;
+        }
+        .student-info {
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>University Schedule</h1>
+</header>
+
+<div class="container">
+    <!-- Display student information -->
+    <div class="student-info">
+        <h2>{{ student_name }}</h2>
+        <p>ID: {{ student_id }}</p>
+    </div>
+
+    <!-- Display current time -->
+    <p>Current time: <span class="time">{{ current_time }}</span></p>
+
+    <!-- Schedule table -->
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Course</th>
+                <th>Room</th>
+                <th>Day</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Professor</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in schedule %}
+                <tr>
+                    <td>{{ record[0] }}</td>
+                    <td>{{ record[1] }}</td>
+                    <td>{{ record[2] }}</td>
+                    <td>{{ record[3] }}</td>
+                    <td>{{ record[6] | strftime('%H:%M') }}</td>
+                    <td>{{ record[7] | strftime('%H:%M') }}</td>
+                    <td>{{ record[8] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
